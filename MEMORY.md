@@ -7,6 +7,7 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 - Datos en localStorage (clave `diario-sesiones`, nombres de campos en español: `fecha`, `tema`, `minutos`, `creado`).
 - Reglas y arquitectura → `AGENTS.md` (fuente de verdad).
 - **Git inicializado** (commit inicial con los 5 archivos del sitio + `.gitignore`). `.opencode/` está ignorada. La identidad git quedó configurada solo a nivel de este repo.
+- Remoto `origin` = `https://github.com/JulianBesanz/diarioworkstudy.git`, rama `main` (en push se renombró de `master`).
 
 ## Decisiones (y por qué)
 - Sin backend ni dependencias: cualquiera debe poder abrirlo con doble clic.
