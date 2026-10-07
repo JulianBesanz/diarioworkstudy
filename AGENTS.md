@@ -7,6 +7,7 @@ Web estática para registrar sesiones de **estudio y de trabajo** y motivarse vi
 - `index.html` (estructura), `styles.css` (estilos), `app.js` (lógica y datos).
 - Debe funcionar abriendo `index.html` con doble clic (`file://`): nada de módulos ES (`type="module"`), `fetch` a archivos locales ni nada que requiera servidor.
 - Git inicializado; el historial arranca en el commit inicial. `.opencode/` va en `.gitignore` y no se versiona.
+- Skills del proyecto en `.agents/skills/` (sí se versiona). Ojo: `.opencode/.agents/skills/` NO es una ruta válida, OpenCode no la detecta.
 
 ## Convenciones
 - Textos de la interfaz en español; identificadores de código en español también.
