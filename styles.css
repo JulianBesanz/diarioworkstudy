@@ -1,0 +1,244 @@
+:root {
+  --fondo: #f4f6fb;
+  --tarjeta: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --acento: #2563eb;
+  --acento-oscuro: #1d4ed8;
+  --borde: #e5e7eb;
+  --fuego: #f97316;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.contenedor {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.cabecera {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.cabecera h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.subtitulo {
+  margin: 4px 0 0;
+  color: var(--texto-suave);
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tarjeta h2 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+/* Racha */
+.racha {
+  display: flex;
+  gap: 16px;
+}
+
+.columna {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.columna + .columna {
+  border-left: 1px solid var(--borde);
+}
+
+/* Minutos de la semana */
+.semana {
+  text-align: center;
+}
+
+.semana .numero-racha {
+  color: var(--acento);
+}
+
+.etiqueta {
+  margin: 0;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.numero-racha {
+  margin: 4px 0;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--fuego);
+  line-height: 1.1;
+}
+
+.ayuda {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+/* Formulario */
+.campo {
+  margin-bottom: 14px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.campo input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fff;
+  color: var(--texto);
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.error {
+  margin: 0 0 12px;
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--acento);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--acento-oscuro);
+}
+
+/* Lista */
+.total {
+  margin: -8px 0 12px;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.lista li:last-child {
+  border-bottom: none;
+}
+
+.info {
+  min-width: 0;
+}
+
+.tema {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.fecha {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.minutos {
+  flex-shrink: 0;
+  background: #eff6ff;
+  color: var(--acento);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.vacio {
+  margin: 0;
+  color: var(--texto-suave);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.vacio[hidden] {
+  display: none;
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+  .contenedor {
+    padding: 16px 12px 40px;
+  }
+
+  .tarjeta {
+    padding: 16px;
+  }
+
+  .cabecera h1 {
+    font-size: 1.35rem;
+  }
+
+  .numero-racha {
+    font-size: 2.6rem;
+  }
+
+  .racha {
+    gap: 12px;
+  }
+
+  .etiqueta {
+    font-size: 0.72rem;
+  }
+}

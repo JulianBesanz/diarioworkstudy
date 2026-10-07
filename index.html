@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario de trabajo y estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header class="cabecera">
+      <h1>Diario de trabajo y estudio</h1>
+      <p class="subtitulo">Registra tus sesiones y mantén tu racha</p>
+    </header>
+
+    <section class="tarjeta racha">
+      <div class="columna">
+        <p class="etiqueta">Racha actual</p>
+        <p class="numero-racha"><span id="valor-racha">0</span> 🔥</p>
+        <p class="ayuda" id="mensaje-racha">Empieza hoy tu primera sesión</p>
+      </div>
+      <div class="columna">
+        <p class="etiqueta">Mejor racha</p>
+        <p class="numero-racha"><span id="valor-mejor">0</span> 🏆</p>
+        <p class="ayuda" id="mensaje-mejor">Todavía no hay una racha guardada</p>
+      </div>
+    </section>
+
+    <section class="tarjeta semana">
+      <p class="etiqueta">Minutos esta semana</p>
+      <p class="numero-racha"><span id="valor-minutos-semana">0</span> min ⏱️</p>
+      <p class="ayuda" id="rango-semana">De lunes a domingo</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Nueva sesión</h2>
+      <form id="formulario-sesion" novalidate>
+        <div class="campo">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required>
+        </div>
+
+        <div class="campo">
+          <label for="tema">Tema</label>
+          <input type="text" id="tema" name="tema" placeholder="Ej. Repasar verbos en inglés" required>
+        </div>
+
+        <div class="campo">
+          <label for="minutos">Minutos</label>
+          <input type="number" id="minutos" name="minutos" min="1" step="1" placeholder="Ej. 30" required>
+        </div>
+
+        <p class="error" id="mensaje-error" hidden></p>
+
+        <button type="submit">Guardar sesión</button>
+      </form>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Sesiones</h2>
+      <p class="total" id="total-sesiones">0 sesiones</p>
+      <ul class="lista" id="lista-sesiones"></ul>
+      <p class="vacio" id="mensaje-vacio">Aún no hay sesiones registradas.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
