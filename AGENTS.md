@@ -13,6 +13,7 @@ Web estática para registrar sesiones de **estudio y de trabajo** y motivarse vi
 - Textos de la interfaz en español; identificadores de código en español también.
 - Código simple, nombres descriptivos y comentarios solo donde aporten.
 - Diseño limpio y responsive; cualquier pantalla nueva debe verse bien en el móvil (el corte está en `@media (max-width: 480px)`).
+- Dirección visual (bitácora de cuaderno): tokens en `:root` (`--papel`, `--tinta`, `--ascua`, `--serif`, `--sans`), **sin sombras**, filetes de 1px en vez de tarjetas flotantes, cifras en Georgia y el ámbar solo sobre fondo oscuro. Solo la racha va en panel oscuro: ese es el único momento fuerte de la página.
 
 ## Datos
 - localStorage, clave `diario-sesiones`: array de `{ fecha: "AAAA-MM-DD", tema, minutos, creado }` (`creado` = `Date.now()`, solo para ordenar).

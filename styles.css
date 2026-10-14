@@ -1,24 +1,41 @@
+/* ============================================================
+   Diario de trabajo y estudio
+   Dirección: bitácora de cuaderno. Un solo momento oscuro (la
+   racha), filetes finos en lugar de tarjetas flotantes, cifras
+   con serifa de almanaque y una única llama ámbar.
+   ============================================================ */
+
 :root {
-  --fondo: #f4f6fb;
-  --tarjeta: #ffffff;
-  --texto: #1f2937;
-  --texto-suave: #6b7280;
-  --acento: #2563eb;
-  --acento-oscuro: #1d4ed8;
-  --borde: #e5e7eb;
-  --fuego: #f97316;
+  /* Color */
+  --papel: #f1f2f5;
+  --blanco: #ffffff;
+  --tinta: #171b24;
+  --tinta-media: #545c6b;
+  --tenue: #a9b0be;
+  --linea: #dfe2e8;
+  --ascua: #f0a73c;
+  --error: #b42318;
+
+  /* Tipografía */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  background: var(--fondo);
-  color: var(--texto);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 
 .contenedor {
@@ -27,41 +44,41 @@ body {
   padding: 24px 16px 48px;
 }
 
+/* Portada */
 .cabecera {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .cabecera h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 6vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .subtitulo {
-  margin: 4px 0 0;
-  color: var(--texto-suave);
+  margin: 2px 0 0;
+  color: var(--tinta-media);
 }
 
+/* Superficie de las secciones (menos las dos primeras, que son
+   especiales: la racha es el panel oscuro y el resumen son filetes) */
 .tarjeta {
-  background: var(--tarjeta);
-  border: 1px solid var(--borde);
-  border-radius: 14px;
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 16px;
   padding: 20px;
   margin-bottom: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .tarjeta h2 {
-  margin: 0 0 16px;
-  font-size: 1.1rem;
+  margin: 0 0 14px;
+  font-family: var(--serif);
+  font-size: 1.2rem;
 }
 
-/* Racha */
-.racha {
-  display: flex;
-  gap: 16px;
-}
-
+/* Cifras y sus textos */
 .columna {
   flex: 1;
   min-width: 0;
@@ -69,43 +86,85 @@ body {
 }
 
 .columna + .columna {
-  border-left: 1px solid var(--borde);
+  border-left: 1px solid var(--linea);
 }
 
-/* Resumen: semana y mes */
-.semana {
+.etiqueta {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--tinta-media);
+}
+
+.numero-racha {
+  margin: 6px 0 4px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 11vw, 3.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.icono {
+  font-size: 0.58em;
+  margin-left: 0.12em;
+}
+
+.ayuda {
+  margin: 0;
+  color: var(--tinta-media);
+  font-size: 0.88rem;
+}
+
+/* El único momento oscuro de la página: la llama de la racha */
+.racha {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  border-radius: 20px;
   display: flex;
   gap: 16px;
+  padding: 26px 16px;
 }
 
-.semana .numero-racha {
-  color: var(--acento);
+.racha .etiqueta {
+  color: var(--tenue);
+}
+
+.racha .numero-racha {
+  color: var(--ascua);
+  font-size: clamp(3rem, 13vw, 4rem);
+}
+
+.racha .columna:last-child .numero-racha {
+  color: var(--blanco);
+}
+
+.racha .ayuda {
+  color: #c9ceda;
+}
+
+.racha .columna + .columna {
+  border-left-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Banda de resumen: filetes arriba y abajo, sin caja */
+.semana {
+  background: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  display: flex;
+  gap: 16px;
+  padding: 18px 4px;
 }
 
 .semana .etiqueta {
   min-height: 2.4em; /* que las dos etiquetas ocupen lo mismo */
 }
 
-.etiqueta {
-  margin: 0;
-  color: var(--texto-suave);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-}
-
-.numero-racha {
-  margin: 4px 0;
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--fuego);
-  line-height: 1.1;
-}
-
-.ayuda {
-  margin: 0;
-  color: var(--texto-suave);
-  font-size: 0.9rem;
+.semana .numero-racha {
+  color: var(--tinta);
+  font-size: clamp(1.9rem, 8vw, 2.3rem);
 }
 
 /* Formulario */
@@ -116,30 +175,34 @@ body {
 .campo label {
   display: block;
   margin-bottom: 6px;
-  font-weight: 600;
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .campo input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--borde);
-  border-radius: 8px;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  background: var(--blanco);
+  color: var(--tinta);
   font-size: 1rem;
   font-family: inherit;
-  background: #fff;
-  color: var(--texto);
+}
+
+.campo input::placeholder {
+  color: #9aa1ad;
 }
 
 .campo input:focus {
   outline: none;
-  border-color: var(--acento);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: var(--tinta);
+  box-shadow: 0 0 0 3px rgba(23, 27, 36, 0.14);
 }
 
 .error {
   margin: 0 0 12px;
-  color: #dc2626;
+  color: var(--error);
   font-size: 0.9rem;
 }
 
@@ -147,22 +210,30 @@ button {
   width: 100%;
   padding: 12px;
   border: none;
-  border-radius: 8px;
-  background: var(--acento);
-  color: #fff;
+  border-radius: 12px;
+  background: var(--tinta);
+  color: var(--blanco);
   font-size: 1rem;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
+  transition: background-color 0.15s ease;
 }
 
-button:hover {
-  background: var(--acento-oscuro);
+@media (hover: hover) {
+  button:hover {
+    background: #2a3140;
+  }
 }
 
-/* Lista */
+button:active {
+  background: #0e1117;
+}
+
+/* Lista: libro de cuentas */
 .total {
-  margin: -8px 0 12px;
-  color: var(--texto-suave);
+  margin: -6px 0 14px;
+  color: var(--tinta-media);
   font-size: 0.85rem;
 }
 
@@ -177,12 +248,13 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--borde);
+  padding: 13px 0;
+  border-bottom: 1px solid var(--linea);
 }
 
 .lista li:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .info {
@@ -195,24 +267,25 @@ button:hover {
 }
 
 .fecha {
-  color: var(--texto-suave);
+  color: var(--tinta-media);
   font-size: 0.85rem;
 }
 
 .minutos {
   flex-shrink: 0;
-  background: #eff6ff;
-  color: var(--acento);
-  padding: 4px 10px;
+  border: 1px solid var(--linea);
   border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--tinta);
   font-size: 0.85rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .vacio {
   margin: 0;
-  color: var(--texto-suave);
+  color: var(--tinta-media);
   text-align: center;
   font-size: 0.9rem;
 }
@@ -221,10 +294,29 @@ button:hover {
   display: none;
 }
 
+/* Accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--tinta);
+  outline-offset: 3px;
+}
+
+.racha :focus-visible {
+  outline-color: var(--ascua);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
 /* Móvil */
 @media (max-width: 480px) {
   .contenedor {
-    padding: 16px 12px 40px;
+    padding: 16px 14px 40px;
   }
 
   .tarjeta {
@@ -232,22 +324,16 @@ button:hover {
   }
 
   .cabecera h1 {
-    font-size: 1.35rem;
-  }
-
-  .numero-racha {
-    font-size: 2.6rem;
+    font-size: 1.45rem;
   }
 
   .racha {
     gap: 12px;
+    padding: 22px 12px;
   }
 
   .semana {
     gap: 12px;
-  }
-
-  .etiqueta {
-    font-size: 0.72rem;
+    padding: 16px 2px;
   }
 }

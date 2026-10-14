@@ -4,6 +4,7 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 
 ## Estado actual
 - v1.3: registrar sesiones (fecha, tema, minutos), racha actual y lista de sesiones, **mejor racha** (🏆), **minutos de la semana** y **días estudiados este mes** (📅) en tarjeta propia bajo la racha.
+- **Rediseño completo** (skill `frontend-design`): estilo bitácora de cuaderno — panel oscuro único para la racha, filetes en vez de tarjetas flotantes, cifras en Georgia, ámbar solo sobre oscuro, cero sombras.
 - Datos en localStorage (clave `diario-sesiones`, nombres de campos en español: `fecha`, `tema`, `minutos`, `creado`).
 - Reglas y arquitectura → `AGENTS.md` (fuente de verdad).
 - **Git inicializado** (commit inicial con los 5 archivos del sitio + `.gitignore`). `.opencode/` está ignorada. La identidad git quedó configurada solo a nivel de este repo.
@@ -22,11 +23,15 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 - Nunca `new Date("AAAA-MM-DD")` ni `toISOString()`: para el domingo se parte del lunes con `new Date(año, mes-1, día)` y `setDate(+6)`.
 - Días del mes en la 2ª columna de la tarjeta de semana (no una cuarta tarjeta, para no alargar la interfaz); etiqueta literal "Días estudiados este mes" y mes natural local que se reinicia el día 1. Último día = `new Date(año, mes+1, 0)` (ojo: `new Date(año, mes, 0)` es el último del mes ANTERIOR).
 - La skill `local-dates` vive en `.agents/skills/` y se carga con la herramienta `skill` antes de tocar fechas.
+- Rediseño: los tokens del diseño (`--papel`, `--tinta`, `--ascua`, `--serif`…) están en `:root`; cualquier pantalla nueva debe reutilizarlos y meter su boldness en un solo sitio. Solo la racha va sobre fondo oscuro.
+- Se añadió `<meta name="description">` (único fallo de Lighthouse SEO); los emojis van envueltos en `<span class="icono" aria-hidden="true">` para poder dimensionarlos sin tocar los `id` que usa el JS.
 
 ## Aprendizajes y errores a evitar
 - `toISOString()` y `new Date("AAAA-MM-DD")` se evalúan en UTC y desplazan un día → usar `getFullYear/getMonth()+1/getDate` + `padStart`.
 - Renombrar la clave de `localStorage` sin migración = perder las sesiones guardadas.
 - Verificación manual en navegador + casos de racha con `node -e` (vacío, solo hoy, hoy+ayer, racha viva desde ayer, hueco).
+- Para revisar el diseño sin servidor del proyecto: `browser.screenshot` exige ventana de escritorio visible (aquí no funcionó); en su lugar servir con un Node temporal y medir con `browser.evaluate` + un **iframe de 375 px** (las media queries responden al iframe, no a la ventana).
+- `browser.evaluate` comparte el scope global con `app.js`: un `const hoy` en el script de prueba choca con la función `hoy()` → envolver siempre en IIFE.
 
 ## Próximos pasos
 - Separar trabajo y estudio: tareas del día, jornadas, reuniones (pedido, aún no implementado).
