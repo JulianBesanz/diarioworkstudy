@@ -30,9 +30,10 @@ Web estática para registrar sesiones de **estudio y de trabajo** y motivarse vi
 - Se recalcula en cada `render()` desde las sesiones guardadas; **no tiene clave propia en localStorage** (por eso no hay migración). Siempre ≥ racha actual.
 - Respeta las mismas reglas: días locales, un solo conteo por día, fechas futuras fuera.
 
-## Minutos de la semana
-- Suma de `minutos` de las sesiones del **lunes a domingo** en fecha local, mostrada en tarjeta propia bajo la racha.
-- Se recalcula en cada `render()`; sin clave propia en localStorage. Excluye fechas futuras y registros incompletos (sin `fecha` o con `minutos` inválidos).
+## Resumen: semana y mes
+- **Minutos esta semana**: suma de `minutos` de las sesiones del **lunes a domingo** en fecha local, en la tarjeta bajo la racha.
+- **Días estudiados este mes**: días distintos con al menos 1 sesión dentro del **mes natural** (`new Date(año, mes, 1)` a `new Date(año, mes + 1, 0)`), en la segunda columna de esa misma tarjeta.
+- Ambos se recalculan en cada `render()`; sin clave propia en localStorage. Excluyen fechas futuras y registros incompletos (sin `fecha` o con `minutos` inválidos); un día con varias sesiones cuenta 1 vez.
 
 ## Forma de trabajar
 - Haz solo lo que se pide: no añadas funcionalidades por tu cuenta.

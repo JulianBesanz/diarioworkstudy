@@ -168,6 +168,33 @@ function formatearDiaMes(cadenaFecha) {
   return fecha.toLocaleDateString("es-ES", { day: "numeric", month: "short" });
 }
 
+// Días estudiados este mes: días distintos con al menos una sesión dentro del
+// mes natural, en fecha local. Se recalcula siempre, sin guardarlo.
+function calcularDiasMes() {
+  const ahora = new Date();
+  const primero = fechaLocal(
+    new Date(ahora.getFullYear(), ahora.getMonth(), 1)
+  );
+  // Día 0 del mes siguiente = último día de este mes
+  const ultimo = fechaLocal(
+    new Date(ahora.getFullYear(), ahora.getMonth() + 1, 0)
+  );
+
+  const diasConSesion = new Set();
+  sesiones.forEach((sesion) => {
+    if (!sesion.fecha) return; // ignorar registros sin fecha
+    if (sesion.fecha > hoy()) return; // fechas futuras no suman
+    if (sesion.fecha < primero || sesion.fecha > ultimo) return;
+    if (!Number.isFinite(sesion.minutos) || sesion.minutos <= 0) return;
+    diasConSesion.add(sesion.fecha);
+  });
+
+  return {
+    dias: diasConSesion.size,
+    mes: ahora.toLocaleDateString("es-ES", { month: "long", year: "numeric" }),
+  };
+}
+
 // ---------- Referencias al HTML ----------
 const formulario = document.getElementById("formulario-sesion");
 const campoFecha = document.getElementById("fecha");
@@ -183,6 +210,8 @@ const mejorElemento = document.getElementById("valor-mejor");
 const mensajeMejor = document.getElementById("mensaje-mejor");
 const minutosSemanaElemento = document.getElementById("valor-minutos-semana");
 const rangoSemanaElemento = document.getElementById("rango-semana");
+const diasMesElemento = document.getElementById("valor-dias-mes");
+const mensajeMesElemento = document.getElementById("mensaje-mes");
 
 // ---------- Render ----------
 function render() {
@@ -216,6 +245,14 @@ function render() {
     formatearDiaMes(semana.lunes) +
     " a " +
     formatearDiaMes(semana.domingo);
+
+  // Días estudiados este mes
+  const mes = calcularDiasMes();
+  diasMesElemento.textContent = mes.dias;
+  mensajeMesElemento.textContent =
+    mes.dias === 0
+      ? "Este mes todavía no hay días"
+      : mes.mes.charAt(0).toUpperCase() + mes.mes.slice(1);
 
   // Lista ordenada de la más reciente a la más antigua
   const ordenadas = sesiones.slice().sort((a, b) => {

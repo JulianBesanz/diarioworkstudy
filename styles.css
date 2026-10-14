@@ -72,13 +72,18 @@ body {
   border-left: 1px solid var(--borde);
 }
 
-/* Minutos de la semana */
+/* Resumen: semana y mes */
 .semana {
-  text-align: center;
+  display: flex;
+  gap: 16px;
 }
 
 .semana .numero-racha {
   color: var(--acento);
+}
+
+.semana .etiqueta {
+  min-height: 2.4em; /* que las dos etiquetas ocupen lo mismo */
 }
 
 .etiqueta {
@@ -235,6 +240,10 @@ button:hover {
   }
 
   .racha {
+    gap: 12px;
+  }
+
+  .semana {
     gap: 12px;
   }
 
