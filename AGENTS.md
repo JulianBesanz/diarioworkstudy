@@ -48,6 +48,12 @@ Web estática para registrar sesiones de **estudio y de trabajo** y motivarse vi
 - Si algo se convierte en una regla permanente, propón moverlo a `AGENTS.md` en lugar de dejarlo en la memoria.
 - No guardes nunca datos sensibles (claves, tokens, datos personales).
 
+## Comandos
+- Tests: `node --test`
+
+## Reglas
+- Lee `docs/constitution.md` y la spec activa (`specs/NNN-*/`) antes de tocar código.
+
 ## Límites
 - ✅ Siempre: respetar las reglas de fechas y racha, mantener los textos en español.
 - ⚠️ Pregunta antes: crear archivos nuevos, cambiar el formato de los datos guardados.

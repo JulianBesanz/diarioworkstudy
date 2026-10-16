@@ -3,6 +3,7 @@
 Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo que ya no aporte.
 
 ## Estado actual
+- **`docs/constitution.md`** creado (6 principios innegociables, verificables) y referenciado en `AGENTS.md` › Reglas. `AGENTS.md` › Comandos manda `node --test` (runner de Node, sin paquetes).
 - v1.3: registrar sesiones (fecha, tema, minutos), racha actual y lista de sesiones, **mejor racha** (🏆), **minutos de la semana** y **días estudiados este mes** (📅) en tarjeta propia bajo la racha.
 - **Rediseño completo** (skill `frontend-design`): estilo bitácora de cuaderno — panel oscuro único para la racha, filetes en vez de tarjetas flotantes, cifras en Georgia, ámbar solo sobre oscuro, cero sombras.
 - Datos en localStorage (clave `diario-sesiones`, nombres de campos en español: `fecha`, `tema`, `minutos`, `creado`).
