@@ -4,6 +4,7 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 
 ## Estado actual
 - **`docs/constitution.md`** creado (6 principios innegociables, verificables) y referenciado en `AGENTS.md` › Reglas. `AGENTS.md` › Comandos manda `node --test` (runner de Node, sin paquetes).
+- **`specs/001-heat-map/spec.md`** redactado (mapa de calor de constancia, 12 semanas): 7 RF con criterios EARS, fuera de alcance y 2 dudas abiertas. Pendiente de aprobación y plan; aún sin código.
 - v1.3: registrar sesiones (fecha, tema, minutos), racha actual y lista de sesiones, **mejor racha** (🏆), **minutos de la semana** y **días estudiados este mes** (📅) en tarjeta propia bajo la racha.
 - **Rediseño completo** (skill `frontend-design`): estilo bitácora de cuaderno — panel oscuro único para la racha, filetes en vez de tarjetas flotantes, cifras en Georgia, ámbar solo sobre oscuro, cero sombras.
 - Datos en localStorage (clave `diario-sesiones`, nombres de campos en español: `fecha`, `tema`, `minutos`, `creado`).
